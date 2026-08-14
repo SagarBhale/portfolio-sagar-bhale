@@ -1,0 +1,73 @@
+.root {
+  padding: 1.35rem;
+  border-radius: 16px;
+  background: var(--mui-palette-background-paper);
+  border: 1px solid var(--mui-palette-divider);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+}
+
+.root:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .root {
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.06);
+  border-color: rgba(5, 150, 105, 0.15);
+}
+
+[data-theme="light"] .root:hover {
+  box-shadow: 0 12px 36px rgba(5, 150, 105, 0.12);
+  border-color: var(--mui-palette-primary-light);
+}
+
+.iconWrap {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: var(--mui-palette-primary-main);
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mui-palette-text-primary);
+}
+
+.level {
+  font-size: 0.8125rem;
+  color: var(--mui-palette-text-secondary);
+}
+
+.progressBar {
+  margin-top: 0.85rem;
+  height: 8px;
+  background: var(--mui-palette-action-hover);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--mui-palette-primary-main),
+    var(--mui-palette-primary-light)
+  );
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+[data-theme="light"] .progressFill {
+  background: linear-gradient(
+    90deg,
+    var(--mui-palette-primary-dark),
+    var(--mui-palette-primary-main)
+  );
+}

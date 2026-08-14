@@ -1,0 +1,44 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--mui-palette-text-secondary);
+  background: var(--mui-palette-action-hover);
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.link:hover {
+  color: var(--mui-palette-primary-main);
+  background: var(--mui-palette-action-selected);
+  transform: translateY(-2px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--mui-palette-primary-main);
+  outline-offset: 2px;
+}
+
+.icon {
+  font-size: 1.35rem;
+}
+
+.small {
+  width: 36px;
+  height: 36px;
+}
+
+.small .icon {
+  font-size: 1.1rem;
+}
+
+.large {
+  width: 52px;
+  height: 52px;
+}
+
+.large .icon {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,395 @@
+/* ─── Section ───────────────────────────────────────────────── */
+.section {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTag {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(244, 114, 182, 0.1);
+  color: #f472b6;
+  border: 1px solid rgba(244, 114, 182, 0.2);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  background: linear-gradient(135deg, var(--mui-palette-text-primary) 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheading {
+  font-size: 1.05rem;
+  color: var(--mui-palette-text-secondary);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ─── Filter Tabs ───────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+
+.filterBtn:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  color: var(--mui-palette-text-primary);
+}
+
+.filterActive {
+  background: rgba(0, 212, 170, 0.1);
+  border-color: rgba(0, 212, 170, 0.4);
+  color: var(--mui-palette-primary-main);
+  font-weight: 600;
+}
+
+.filterDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotMern {
+  background: #00d4aa;
+  box-shadow: 0 0 6px #00d4aa88;
+}
+
+.dotAi {
+  background: #a78bfa;
+  box-shadow: 0 0 6px #a78bfa88;
+}
+
+.filterCount {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 960px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Project Card ──────────────────────────────────────────── */
+.projectCard {
+  background: var(--mui-palette-background-paper);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 212, 170, 0.25);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 212, 170, 0.1);
+}
+
+.featured {
+  border-color: rgba(0, 212, 170, 0.2);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--mui-palette-primary-main), var(--mui-palette-secondary-main));
+  color: #fff;
+}
+
+/* Image */
+.cardImageWrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.projectCard:hover .cardImage {
+  transform: scale(1.06);
+  filter: brightness(0.7);
+}
+
+.cardImageOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .cardImageOverlay {
+  opacity: 1;
+}
+
+.cardLinks {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s;
+}
+
+.cardLink:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.cardLinkPrimary {
+  background: var(--mui-palette-primary-main);
+  border-color: transparent;
+}
+
+.cardLinkPrimary:hover {
+  background: var(--mui-palette-primary-light);
+}
+
+/* Card body */
+.cardBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.cardCategory {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mui-palette-text-secondary);
+}
+
+.categoryDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--mui-palette-text-primary);
+  line-height: 1.35;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: var(--mui-palette-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(0, 212, 170, 0.08);
+  color: var(--mui-palette-primary-main);
+  border: 1px solid rgba(0, 212, 170, 0.15);
+}
+
+/* ─── Placeholder Card ──────────────────────────────────────── */
+.placeholderCard {
+  background: var(--mui-palette-background-paper);
+  border: 1.5px dashed rgba(0, 212, 170, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.placeholderCard:hover {
+  border-color: rgba(0, 212, 170, 0.4);
+  background: rgba(0, 212, 170, 0.03);
+}
+
+.placeholderIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 212, 170, 0.08);
+  border: 1.5px dashed rgba(0, 212, 170, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mui-palette-primary-main);
+  opacity: 0.7;
+}
+
+.placeholderTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mui-palette-text-secondary);
+  margin: 0;
+}
+
+.placeholderDesc {
+  font-size: 0.83rem;
+  color: var(--mui-palette-text-secondary);
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.placeholderTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.placeholderBadge {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(251, 146, 60, 0.1);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.2);
+}
+
+/* ─── CTA ───────────────────────────────────────────────────── */
+.cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ctaText {
+  color: var(--mui-palette-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.75rem;
+  border-radius: 12px;
+  background: var(--mui-palette-background-paper);
+  border: 1.5px solid rgba(0, 212, 170, 0.25);
+  color: var(--mui-palette-primary-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.ctaBtn:hover {
+  background: rgba(0, 212, 170, 0.08);
+  border-color: rgba(0, 212, 170, 0.5);
+  transform: translateY(-2px);
+}

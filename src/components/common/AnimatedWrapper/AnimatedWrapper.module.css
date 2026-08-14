@@ -1,0 +1,31 @@
+.root {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fadeOnly {
+  transform: none;
+}
+
+.slideUp {
+  transform: translateY(24px);
+}
+
+.slideUp.visible {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .visible,
+  .slideUp {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}

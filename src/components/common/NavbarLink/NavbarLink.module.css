@@ -1,0 +1,30 @@
+.link {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--mui-palette-text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.link:hover {
+  color: var(--mui-palette-primary-main);
+  background: var(--mui-palette-action-hover);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--mui-palette-primary-main);
+  outline-offset: 2px;
+}
+
+.active {
+  color: var(--mui-palette-primary-main);
+  background: var(--mui-palette-action-selected);
+}
+
+.active:hover {
+  color: var(--mui-palette-primary-dark);
+  background: var(--mui-palette-action-selected);
+}

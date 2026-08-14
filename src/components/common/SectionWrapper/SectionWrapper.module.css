@@ -1,0 +1,26 @@
+.root {
+  padding: 5rem 0;
+  width: 100%;
+}
+
+.narrow {
+  padding: 3rem 0;
+}
+
+.wide {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .root {
+    padding: 3rem 0;
+  }
+
+  .narrow {
+    padding: 2rem 0;
+  }
+
+  .wide {
+    padding: 4rem 0;
+  }
+}

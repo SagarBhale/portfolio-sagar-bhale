@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--mui-palette-action-hover);
+  border-top-color: var(--mui-palette-primary-main);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.small .spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.large .spinner {
+  width: 56px;
+  height: 56px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

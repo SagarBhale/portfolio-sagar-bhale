@@ -1,0 +1,35 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 8px;
+  background: var(--mui-palette-action-selected);
+  color: var(--mui-palette-text-primary);
+  transition: background 0.2s ease;
+}
+
+.root:hover {
+  background: var(--mui-palette-action-hover);
+}
+
+.primary {
+  background: rgba(13, 148, 136, 0.15);
+  color: var(--mui-palette-primary-main);
+}
+
+.secondary {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--mui-palette-secondary-main);
+}
+
+.small {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.large {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}

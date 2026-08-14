@@ -1,0 +1,264 @@
+/* ─── Navbar Root ───────────────────────────────────────────── */
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom-color: rgba(0, 212, 170, 0.1);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .scrolled {
+  background: rgba(248, 250, 252, 0.8);
+  border-bottom-color: rgba(5, 150, 105, 0.12);
+  box-shadow: 0 4px 32px rgba(5, 150, 105, 0.08);
+}
+
+/* ─── Inner Container ───────────────────────────────────────── */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+/* ─── Logo ──────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: transform 0.2s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logoBracket {
+  color: var(--mui-palette-primary-main);
+  font-family: 'Courier New', monospace;
+}
+
+.logoText {
+  background: linear-gradient(135deg, var(--mui-palette-primary-main), var(--mui-palette-secondary-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 2px;
+}
+
+/* ─── Desktop Nav ───────────────────────────────────────────── */
+.nav {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 900px) {
+  .nav {
+    display: flex;
+  }
+}
+
+/* ─── Nav Link ──────────────────────────────────────────────── */
+.navLink {
+  position: relative;
+  padding: 0.5rem 0.85rem;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--mui-palette-text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+.navLink:hover {
+  color: var(--mui-palette-primary-main);
+  background: rgba(0, 212, 170, 0.07);
+}
+
+.navLinkActive {
+  color: var(--mui-palette-primary-main);
+  font-weight: 600;
+}
+
+.activePill {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mui-palette-primary-main), var(--mui-palette-secondary-main));
+  animation: pillIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes pillIn {
+  from { width: 0; opacity: 0; }
+  to { width: 18px; opacity: 1; }
+}
+
+/* ─── Actions ───────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ─── Mobile Menu Button ────────────────────────────────────── */
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1.5px solid rgba(0, 212, 170, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 212, 170, 0.06);
+  color: var(--mui-palette-text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menuButton:hover {
+  background: rgba(0, 212, 170, 0.12);
+  border-color: rgba(0, 212, 170, 0.4);
+  transform: scale(1.05);
+}
+
+.menuButtonOpen {
+  background: rgba(0, 212, 170, 0.12);
+  border-color: rgba(0, 212, 170, 0.4);
+  color: var(--mui-palette-primary-main);
+}
+
+@media (min-width: 900px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+/* ─── Backdrop ──────────────────────────────────────────────── */
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1199;
+  animation: fadeIn 0.2s ease both;
+}
+
+/* ─── Mobile Drawer ─────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 88vw;
+  background: rgba(12, 12, 20, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(0, 212, 170, 0.12);
+  box-shadow: -8px 0 48px rgba(0, 0, 0, 0.4);
+  z-index: 1200;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  animation: slideIn 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+[data-theme="light"] .drawer {
+  background: rgba(255, 255, 255, 0.96);
+  border-left-color: rgba(5, 150, 105, 0.15);
+}
+
+.drawerLogo {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 212, 170, 0.12);
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--mui-palette-text-secondary);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  animation: slideInItem 0.3s ease both;
+}
+
+.drawerLink:hover {
+  background: rgba(0, 212, 170, 0.08);
+  color: var(--mui-palette-primary-main);
+  padding-left: 1.25rem;
+}
+
+.drawerLinkActive {
+  background: rgba(0, 212, 170, 0.1);
+  color: var(--mui-palette-primary-main);
+  font-weight: 600;
+}
+
+.drawerNum {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--mui-palette-primary-main);
+  opacity: 0.6;
+  font-family: 'Courier New', monospace;
+  min-width: 20px;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────── */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+@keyframes slideInItem {
+  from { transform: translateX(20px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

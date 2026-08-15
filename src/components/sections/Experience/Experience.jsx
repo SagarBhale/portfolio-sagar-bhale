@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { experience as data } from '../../../data/portfolio';
+import { useGsapScrollTrigger } from '../../../hooks/useGsapScrollTrigger';
 import styles from './Experience.module.css';
 
 const Experience = React.memo(function Experience() {
+  const containerRef = useRef(null);
+
+  // GSAP ScrollTrigger for timeline items
+  useGsapScrollTrigger(containerRef, `.${styles.timelineItem}`, {
+    y: 50,
+    stagger: 0.2,
+    duration: 0.8,
+  });
+
   return (
     <section id="experience" className={styles.section}>
-      <div className={styles.container}>
+      <div className={styles.container} ref={containerRef}>
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.sectionTag}>Career</span>
@@ -19,7 +29,6 @@ const Experience = React.memo(function Experience() {
             <div
               key={item.company + item.role}
               className={`${styles.timelineItem} ${i % 2 === 0 ? styles.left : styles.right}`}
-              style={{ animationDelay: `${i * 0.15}s` }}
             >
               {/* Timeline dot + line connector */}
               <div className={styles.connector}>
@@ -35,8 +44,16 @@ const Experience = React.memo(function Experience() {
                 </div>
                 <h3 className={styles.role}>{item.role}</h3>
                 <p className={styles.company}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                    <path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4z"/>
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    aria-hidden
+                  >
+                    <path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4z" />
                   </svg>
                   {item.company}
                 </p>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { projects as data } from '../../../data/portfolio';
+import { useGsapScrollTrigger } from '../../../hooks/useGsapScrollTrigger';
 import styles from './Projects.module.css';
 
 const FILTERS = ['All', 'MERN', 'Python/AI'];
@@ -89,6 +90,14 @@ function ProjectCard({ project }) {
 
 const Projects = React.memo(function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const containerRef = useRef(null);
+
+  // GSAP ScrollTrigger for project cards
+  useGsapScrollTrigger(containerRef, `.${styles.projectCard}, .${styles.placeholderCard}`, {
+    y: 40,
+    stagger: 0.1,
+    duration: 0.7,
+  });
 
   const filtered = data.filter(
     (p) => activeFilter === 'All' || p.category === activeFilter
@@ -96,7 +105,7 @@ const Projects = React.memo(function Projects() {
 
   return (
     <section id="projects" className={styles.section}>
-      <div className={styles.container}>
+      <div className={styles.container} ref={containerRef}>
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.sectionTag}>My Work</span>
@@ -137,7 +146,7 @@ const Projects = React.memo(function Projects() {
         <div className={styles.cta}>
           <p className={styles.ctaText}>More projects coming soon! Stay tuned.</p>
           <a
-            href="https://github.com"
+            href="https://github.com/SagarBhale"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.ctaBtn}

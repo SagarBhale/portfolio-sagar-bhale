@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import { useForm } from '../../../hooks/useForm';
 import { contact as contactData } from '../../../data/portfolio';
+import { useGsapScrollTrigger } from '../../../hooks/useGsapScrollTrigger';
 import styles from './Contact.module.css';
 
 const iconMap = {
@@ -27,23 +28,32 @@ const validate = (values) => {
 };
 
 const Contact = React.memo(function Contact({ onSnackbar }) {
+  const containerRef = useRef(null);
+
+  // GSAP ScrollTrigger for Contact panels
+  useGsapScrollTrigger(containerRef, `.${styles.infoCard}, .${styles.formPanel}`, {
+    y: 45,
+    stagger: 0.15,
+    duration: 0.8,
+  });
+
   const { values, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialValues,
     validate
   );
 
-  const onSubmit = useCallback(
-    () => {
-      if (onSnackbar) {
-        onSnackbar({ type: 'success', message: '🚀 Message sent! I\'ll get back to you soon.' });
-      }
-    },
-    [onSnackbar]
-  );
+  const onSubmit = useCallback(() => {
+    if (onSnackbar) {
+      onSnackbar({
+        type: 'success',
+        message: "🚀 Message sent! I'll get back to you soon.",
+      });
+    }
+  }, [onSnackbar]);
 
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.container}>
+      <div className={styles.container} ref={containerRef}>
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.sectionTag}>Let's Connect</span>
@@ -76,10 +86,21 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
                   </div>
                 </a>
                 {contactData.phone && (
-                  <a href={`tel:${contactData.phone.replace(/\s+/g, '')}`} className={styles.contactItem}>
+                  <a
+                    href={`tel:${contactData.phone.replace(/\s+/g, '')}`}
+                    className={styles.contactItem}
+                  >
                     <div className={styles.contactIcon}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden
+                      >
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                       </svg>
                     </div>
                     <div>
@@ -91,8 +112,17 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
                 {contactData.location && (
                   <div className={styles.contactItem}>
                     <div className={styles.contactIcon}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden
+                      >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
                       </svg>
                     </div>
                     <div>
@@ -139,7 +169,9 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className={styles.formRow}>
                 <div className={styles.fieldGroup}>
-                  <label className={styles.label} htmlFor="contact-name">Name</label>
+                  <label className={styles.label} htmlFor="contact-name">
+                    Name
+                  </label>
                   <input
                     id="contact-name"
                     type="text"
@@ -154,7 +186,9 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
                   {errors.name && <span className={styles.errorMsg}>{errors.name}</span>}
                 </div>
                 <div className={styles.fieldGroup}>
-                  <label className={styles.label} htmlFor="contact-email">Email</label>
+                  <label className={styles.label} htmlFor="contact-email">
+                    Email
+                  </label>
                   <input
                     id="contact-email"
                     type="email"
@@ -171,7 +205,9 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
               </div>
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label} htmlFor="contact-message">Message</label>
+                <label className={styles.label} htmlFor="contact-message">
+                  Message
+                </label>
                 <textarea
                   id="contact-message"
                   name="message"
@@ -187,8 +223,17 @@ const Contact = React.memo(function Contact({ onSnackbar }) {
               </div>
 
               <button type="submit" className={styles.submitBtn}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden
+                >
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
                 </svg>
                 Send Message
               </button>

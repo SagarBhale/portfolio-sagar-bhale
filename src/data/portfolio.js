@@ -162,7 +162,7 @@ export const experience = [
     role: 'Full Stack Developer (MERN)',
     company: 'Zenqua Technologies Private Limited',
     location: 'Indore, (M.P.)',
-    duration: 'Nov 2024 – Present',
+    duration: 'Aug 2024 – Present',
     type: 'Full-time',
     achievements: [
       'Developed scalable full-stack web applications using Node.js, Express.js, React.js, and MongoDB',
